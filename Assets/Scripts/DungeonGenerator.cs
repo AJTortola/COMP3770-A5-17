@@ -32,9 +32,9 @@ public class DungeonGenerator : MonoBehaviour
 
     void GenerateDungeon()
     {
-        for (int i = 0; size.x; i++)
+        for (int i = 0; i < size.x; i++)
         {
-            for (int j = 0; size.y; j++)
+            for (int j = 0; j < size.y; j++)
             {
                 Cell currentCell = board[Mathf.FloorToInt(i + j * size.x)];
                 if (currentCell.visited)
