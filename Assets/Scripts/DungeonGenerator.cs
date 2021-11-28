@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DungeonGenerator : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class DungeonGenerator : MonoBehaviour
         public bool visited = false;
         public bool[] status = new bool[4];
     }
+
 
     public Vector2 size;
     public int startPos = 0;
@@ -22,6 +24,10 @@ public class DungeonGenerator : MonoBehaviour
     void Start()
     {
         MazeGenerator();
+
+        //UPDATE NAVMESH
+
+
     }
 
     // Update is called once per frame
