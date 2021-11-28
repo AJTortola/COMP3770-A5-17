@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class RespawnPoint : MonoBehaviour
 {
-    public Transform Player;
-    public Transform Respawn;
+    public GameObject Player;
+    public GameObject Respawn;
+
+    void Start()
+    {
+        Player = GameObject.Find("Capsule");
+        Respawn = GameObject.Find("PlayerRespawn");
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

@@ -15,16 +15,25 @@ public class DungeonGenerator : MonoBehaviour
 
     public Vector2 size;
     public int startPos = 0;
-    public GameObject room;
+
+    //List of prefabs
+    public GameObject[] rooms;
+    //public GameObject room;
+
     public Vector2 offset;
 
     List<Cell> board;
 
+    public NavMeshSurface[] navMeshSurfaces;
+
     // Start is called before the first frame update
     void Start()
     {
-        MazeGenerator();
+        
+        rooms = Resources.LoadAll<GameObject>("Rooms");
 
+        MazeGenerator();
+        NavMeshBaker();
         //UPDATE NAVMESH
 
 
@@ -36,6 +45,17 @@ public class DungeonGenerator : MonoBehaviour
         
     }
 
+    void NavMeshBaker(){
+        NavMeshSurface[] navMeshSurfaces = (NavMeshSurface[]) GameObject.FindObjectsOfType (typeof(NavMeshSurface));
+        for(int i = 0; i<navMeshSurfaces.Length; i++){
+            navMeshSurfaces[i].BuildNavMesh();
+        }
+    }
+    int chooseRandomRoom()
+    {
+        int roomChoice = Random.Range(0,2);        //only 3 rooms to choose from minus the endpoint room
+        return roomChoice;
+    }
     void GenerateDungeon()
     {
         for (int i = 0; i < size.x; i++)
@@ -45,9 +65,13 @@ public class DungeonGenerator : MonoBehaviour
                 Cell currentCell = board[Mathf.FloorToInt(i + j * size.x)];
                 if (currentCell.visited)
                 {
+                    
+                    var newRoom = Instantiate(rooms[chooseRandomRoom()] as GameObject, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
+                    newRoom.UpdateRoom(currentCell.status);
+                    /*
                     var newRoom = Instantiate(room, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
                     newRoom.UpdateRoom(currentCell.status);
-
+*/
                     newRoom.name += " " + i + "-" + j;
                 }
             }

@@ -13,7 +13,7 @@ public class Enemy_Master : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Player = GameObject.Find("Capsule");
     }
 
     // Update is called once per frame
