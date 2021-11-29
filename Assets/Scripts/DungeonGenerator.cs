@@ -33,8 +33,9 @@ public class DungeonGenerator : MonoBehaviour
         rooms = Resources.LoadAll<GameObject>("Rooms");
 
         MazeGenerator();
-        NavMeshBaker();
         //UPDATE NAVMESH
+        NavMeshBaker();
+       
 
 
     }
@@ -53,7 +54,7 @@ public class DungeonGenerator : MonoBehaviour
     }
     int chooseRandomRoom()
     {
-        int roomChoice = Random.Range(0,2);        //only 3 rooms to choose from minus the endpoint room
+        int roomChoice = Random.Range(0,4);        //only 3 rooms to choose from minus the endpoint room
         return roomChoice;
     }
     void GenerateDungeon()
@@ -68,11 +69,7 @@ public class DungeonGenerator : MonoBehaviour
                     
                     var newRoom = Instantiate(rooms[chooseRandomRoom()] as GameObject, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
                     newRoom.UpdateRoom(currentCell.status);
-                    //newRoom.BakeNavMesh();
-                    /*
-                    var newRoom = Instantiate(room, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
-                    newRoom.UpdateRoom(currentCell.status);
-                    */
+
                     newRoom.name += " " + i + "-" + j;
                 }
             }
