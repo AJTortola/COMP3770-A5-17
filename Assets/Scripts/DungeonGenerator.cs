@@ -33,7 +33,7 @@ public class DungeonGenerator : MonoBehaviour
         rooms = Resources.LoadAll<GameObject>("Rooms");
 
         MazeGenerator();
-
+        NavMeshBaker();
         //UPDATE NAVMESH
 
 
@@ -45,6 +45,12 @@ public class DungeonGenerator : MonoBehaviour
         
     }
 
+    void NavMeshBaker(){
+        NavMeshSurface[] navMeshSurfaces = (NavMeshSurface[]) GameObject.FindObjectsOfType (typeof(NavMeshSurface));
+        for(int i = 0; i<navMeshSurfaces.Length; i++){
+            navMeshSurfaces[i].BuildNavMesh();
+        }
+    }
     int chooseRandomRoom()
     {
         int roomChoice = Random.Range(0,2);        //only 3 rooms to choose from minus the endpoint room
@@ -62,7 +68,7 @@ public class DungeonGenerator : MonoBehaviour
                     
                     var newRoom = Instantiate(rooms[chooseRandomRoom()] as GameObject, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
                     newRoom.UpdateRoom(currentCell.status);
-                    newRoom.BakeNavMesh();
+                    //newRoom.BakeNavMesh();
                     /*
                     var newRoom = Instantiate(room, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
                     newRoom.UpdateRoom(currentCell.status);

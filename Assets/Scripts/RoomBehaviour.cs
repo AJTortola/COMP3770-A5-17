@@ -8,7 +8,7 @@ public class RoomBehaviour : MonoBehaviour
     public GameObject[] walls;
     public GameObject[] doors;
 
-    public NavMeshSurface surface;
+    //public NavMeshSurface surface;
 
     // Update is called once per frame
     public void UpdateRoom(bool[] status)
@@ -20,9 +20,14 @@ public class RoomBehaviour : MonoBehaviour
         }
         
     }
-
+/*
     public void BakeNavMesh(){
         NavMeshSurface surface = (NavMeshSurface) gameObject.GetComponent<NavMeshSurface>();
         surface.BuildNavMesh();
     }
+
+    public void connectNavMesh(){
+
+    }
+    */
 }
