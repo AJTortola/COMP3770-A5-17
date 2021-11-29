@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.049234707, g: 0.0802569, b: 0.13151382, a: 1}
+  m_IndirectSpecularColor: {r: 0.04923461, g: 0.0802567, b: 0.13151348, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -297,6 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 3, y: 3}
   startPos: 0
+  endPointRoom: {fileID: 3559531407475778128, guid: b11e456cb3c176246b8191c2b153ddc1, type: 3}
   rooms: []
   offset: {x: 11.35, y: 15.79}
   navMeshSurfaces: []
