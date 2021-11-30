@@ -20,14 +20,5 @@ public class RoomBehaviour : MonoBehaviour
         }
         
     }
-/*
-    public void BakeNavMesh(){
-        NavMeshSurface surface = (NavMeshSurface) gameObject.GetComponent<NavMeshSurface>();
-        surface.BuildNavMesh();
-    }
 
-    public void connectNavMesh(){
-
-    }
-    */
 }

@@ -21,6 +21,8 @@ public class DungeonGenerator : MonoBehaviour
     //List of prefabs
     public GameObject[] rooms;
     public Vector2 offset;
+    public int roomCount = 0;
+    public int numOfRooms = 0;
 
     List<Cell> board;
 
@@ -52,38 +54,38 @@ public class DungeonGenerator : MonoBehaviour
             navMeshSurfaces[i].BuildNavMesh();
         }
     }
-    int chooseRandomRoom()
+    int chooseRandomPrefab()
     {
-        int roomChoice = Random.Range(0,3);        //only 3 rooms to choose from minus the endpoint room
+        int roomChoice = Random.Range(0,2);        //only 3 rooms to choose from minus the endpoint room
         return roomChoice;
     }
     void GenerateDungeon()
     {
 
-        int roomCount = 0;
+        
 
         for (int i = 0; i < size.x; i++)
         {
             for (int j = 0; j < size.y; j++)
             {
                 
-
                 Cell currentCell = board[Mathf.FloorToInt(i + j * size.x)];
                 if (currentCell.visited)
                 {
                     
-                    if (roomCount != (size.x*size.y)){
-                        var newRoom = Instantiate(rooms[chooseRandomRoom()] as GameObject, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
+                    if (roomCount != numOfRooms){
+                        var newRoom = Instantiate(rooms[chooseRandomPrefab()] as GameObject, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
                         newRoom.UpdateRoom(currentCell.status);
                         newRoom.name += " " + i + "-" + j;
+                        roomCount++;
                     }
                     else{
                         var newRoom = Instantiate(endPointRoom, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
                         newRoom.UpdateRoom(currentCell.status);
                         newRoom.name += " " + i + "-" + j;
                     }
+
                     
-                    roomCount++;
                 }
 
             
@@ -140,7 +142,8 @@ public class DungeonGenerator : MonoBehaviour
                 path.Push(currentCell);
 
                 int newCell = neighbours[Random.Range(0, neighbours.Count)];
-
+                numOfRooms++;
+                
                 if (newCell > currentCell)
                 {
                     //down or right

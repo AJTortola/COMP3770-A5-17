@@ -295,11 +295,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc028a78982cf444b16d45a97aee9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 3, y: 3}
+  size: {x: 7, y: 4}
   startPos: 0
   endPointRoom: {fileID: 3559531407475778128, guid: b11e456cb3c176246b8191c2b153ddc1, type: 3}
   rooms: []
   offset: {x: 11.35, y: 15.79}
+  roomCount: 0
+  numOfRooms: 0
   navMeshSurfaces: []
 --- !u!4 &996866928
 Transform:
