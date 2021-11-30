@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class PickUpCounter : MonoBehaviour
+public class PickUpCounter2 : MonoBehaviour
 {
     public int points = 0;
-    public string path = "Assets/CSV/points.csv";
+    string path = "Assets/CSV/points2.csv";
     StreamWriter writer;
     private void OnGUI()
     {
@@ -15,12 +15,12 @@ public class PickUpCounter : MonoBehaviour
 
         //Open the writer
         writer = new StreamWriter(path);
-        
+        writer.WriteLine("coinsCollected2");
         writer.WriteLine(points);
         writer.Close();
 
     }
-    
-    
+
+
 
 }

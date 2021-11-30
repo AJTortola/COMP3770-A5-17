@@ -56,7 +56,7 @@ public class DungeonGenerator : MonoBehaviour
     }
     int chooseRandomPrefab()
     {
-        int roomChoice = Random.Range(0,2);        //only 3 rooms to choose from minus the endpoint room
+        int roomChoice = Random.Range(0,3);        //only 3 rooms to choose from minus the endpoint room
         return roomChoice;
     }
     void GenerateDungeon()

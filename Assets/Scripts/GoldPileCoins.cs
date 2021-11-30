@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GoldPileCoins : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
@@ -13,4 +14,6 @@ public class GoldPileCoins : MonoBehaviour
             Destroy(gameObject);//this destorys the item 
         }
     }
+
+
 }
